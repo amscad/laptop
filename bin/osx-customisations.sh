@@ -82,6 +82,11 @@ echo "Setting General UI/UX defaults..."
 # Disable the "Are you sure you want to open this application?" dialog
   defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+ 
+
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
   sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
@@ -157,7 +162,6 @@ echo "Setting General UI/UX defaults..."
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
   defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
   defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-
 # Follow the keyboard focus while zoomed in
   defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
@@ -286,7 +290,7 @@ echo "Setting General UI/UX defaults..."
 #   defaults write com.apple.dock minimize-to-application -bool true
 
 # Open default on my home folder
-  defaults write com.apple.finder NewWindowTargetPath -string "file://localhost${HOME}"
+  defaults write com.apple.finder NewWindowTargetPath -string "file://localhost/${HOME}"
 
 # # Increase window resize speed for Cocoa applications
 #   defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -465,7 +469,7 @@ echo "Setting General UI/UX defaults..."
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-  # hash tmutil &> /dev/null && sudo tmutil disablelocal
+  hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
