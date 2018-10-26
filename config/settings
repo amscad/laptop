@@ -1,6 +1,6 @@
 # Github credentials
-GITHUB_USERNAME="{GITHUB_USERNAME}"
-GITHUB_MAIL="{GITHUB_MAIL}"
+GITHUB_USERNAME="amscad"
+GITHUB_MAIL="ajmansfield@gmail.com"
 
 # Computer name - only required for a personal setup
 # COMPUTER_NAME="{COMPUTER_NAME}"
