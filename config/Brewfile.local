@@ -89,6 +89,7 @@ brew "pgcli"
 # Browsers
 cask "google-chrome"
 cask "firefox"
+cask "brave-browser"
 
 # VM
 cask "vmware-fusion8"
