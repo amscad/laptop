@@ -87,7 +87,7 @@ cask "firefox"
 cask "brave-browser"
 
 # VM
-#cask "vmware-fusion8"
+cask "vmware-fusion8"
 
 # useful utils for backing up
 cask "dropbox"
@@ -139,6 +139,9 @@ cask "kitematic"
 
 # virtualbox - should be downloaded as a part of genymotion
 cask "virtualbox"
+
+# for adding frameworks to a cocoa app
+brew "carthage"
 
 # mas cli to install apps from app store - doesnt work with Mojave
 # brew "mas"
