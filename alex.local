@@ -26,11 +26,6 @@ else
   echo "Some items in Brewfile were not installed successfully."
 fi
 
-########################[ OH MY ZSH ]##########################################
-fancy_echo "Setup oh-my-zsh"
-   sh "$BIN_PATH/zsh.sh"
-
-
 ########################[ Github ]#############################################
 fancy_echo "Setup github"
    sh "$BIN_PATH/git_config.sh"
@@ -64,3 +59,9 @@ fancy_echo "Setup ruby and node"
 # echo "Updating hosts file"
 # git clone https://github.com/amscad/hosts.git ~/hosts
 # cd ~/hosts && python updateHostsFile.py
+
+
+########################[ OH MY ZSH ]##########################################
+# move change to using zsh to the end to allow the script to complete
+fancy_echo "Setup oh-my-zsh"
+   sh "$BIN_PATH/zsh.sh"

@@ -34,20 +34,6 @@ if [ -f "$SETTINGS" ]; then
 
   source "$SETTINGS"
 
-  # check to make sure the computer name etc should be updated
-  if [ ! $COMPUTER_NAME ]; then
-    echo "###### Using $COMPUTER_NAME for your computer name ######################"
-    echo "###### Using $HOST_NAME for your host name##### #########################"
-    echo "###### Using $LOCAL_HOST_NAME for your local host name ##################"
-    echo "###### Using $NET_BIOS_NAME for your net bios name ######################"
-    echo "###### Using $NET_BIOS_NAME for your timezone ###########################"
-
-    # Set computer name (as done via System Preferences → Sharing)
-    sudo scutil --set ComputerName $COMPUTER_NAME
-    sudo scutil --set HostName $HOST_NAME
-    sudo scutil --set LocalHostName $LOCAL_HOST_NAME
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NET_BIOS_NAME
-  fi
   
 fi
 ###############################################################################
@@ -81,6 +67,11 @@ echo "Setting General UI/UX defaults..."
 
 # Disable the "Are you sure you want to open this application?" dialog
   defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+ 
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
@@ -157,7 +148,6 @@ echo "Setting General UI/UX defaults..."
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
   defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
   defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-
 # Follow the keyboard focus while zoomed in
   defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
@@ -286,7 +276,7 @@ echo "Setting General UI/UX defaults..."
 #   defaults write com.apple.dock minimize-to-application -bool true
 
 # Open default on my home folder
-  defaults write com.apple.finder NewWindowTargetPath -string "file://localhost${HOME}"
+  defaults write com.apple.finder NewWindowTargetPath -string "file://localhost/${HOME}"
 
 # # Increase window resize speed for Cocoa applications
 #   defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -465,7 +455,7 @@ echo "Setting General UI/UX defaults..."
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-  # hash tmutil &> /dev/null && sudo tmutil disablelocal
+  hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
