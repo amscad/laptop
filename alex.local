@@ -30,7 +30,6 @@ fi
 fancy_echo "Setup github"
    sh "$BIN_PATH/git_config.sh"
 
-
 ########################[ VIM ]################################################
 fancy_echo "Setup vim"
    sh "$BIN_PATH/vim.sh"
@@ -48,7 +47,6 @@ if [ -f "$BIN_PATH/osx-customisations.sh" ]; then
     touch "$HOME/.osx-customisations-run"
   fi
 fi
-
 
 ########################[ asdf vm for ruby etc ]###############################
 fancy_echo "Setup ruby and node"
