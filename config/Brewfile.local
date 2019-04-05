@@ -21,7 +21,7 @@ cask "tunnelbear"
 # cask "avira-antivirus"
 
 # Image manipulation
-brew "imagemagick"
+# brew "imagemagick"
 
 # programming languages and things that are needed, and cant really be used via a docker container
 brew "cmake"
@@ -35,7 +35,7 @@ brew "go"
 # brew "sbt"
 
 # fancy diffs with git
-brew "diff-so-fancy"
+# brew "diff-so-fancy"
 
 brew "libpng"
 
@@ -57,7 +57,7 @@ cask "jetbrains-toolbox"
 cask "beyond-compare"
 
 # swagger codegenerator - only works with java 8
-brew "swagger-codegen"
+# brew "swagger-codegen"
 
 ######################################
 ## Mobile development 
@@ -90,7 +90,7 @@ cask "brave-browser"
 cask "vmware-fusion8"
 
 # useful utils for backing up
-cask "dropbox"
+# cask "dropbox"
 # cask "google-backup-and-sync"       # google drive for syncing
 cask "google-drive-file-stream"
 
@@ -116,7 +116,7 @@ cask "libreoffice"
 cask "spotify"
 
 # BBC iPlayer
-cask "bbc-iplayer-downloads"
+# cask "bbc-iplayer-downloads"
 
 # use an ipad as a second display - commercial
 cask "duet"
@@ -130,10 +130,10 @@ cask "soundflower"
 # the unarchiver - to unarchive...
 cask "the-unarchiver"
 
-cask "whatsapp"
+# cask "whatsapp"
 
 # UI for working with docker
-cask "kitematic"
+# cask "kitematic"
 
 # virtualbox - should be downloaded as a part of genymotion
 cask "virtualbox"

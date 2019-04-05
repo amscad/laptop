@@ -13,7 +13,7 @@ source "$BIN_PATH/functions.sh"
 ###################################[ version manager ]########################
 echo "Configuring asdf version manager..."
 if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.1
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.1
   append_to_zshrc "source $HOME/.asdf/asdf.sh" 1
   append_to_zshrc "source $HOME/.asdf/completions/asdf.bash" 1
 fi
@@ -53,3 +53,6 @@ bundle config --global jobs $((number_of_cores - 1))
 echo "Installing latest Node..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
+
+echo "Installing latest yarn"
+bash "npm install -g yarn"
