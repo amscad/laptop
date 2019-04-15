@@ -56,3 +56,6 @@ install_asdf_language "nodejs"
 
 echo "Installing latest yarn"
 bash "npm install -g yarn"
+
+echo "Installing latest grunt"
+bash "npm install -g grunt"
