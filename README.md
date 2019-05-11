@@ -2,7 +2,6 @@
 Sets up a newly imaged Mac for development, quickly using 
 common tools/apps used at the Telegraph
 
-
 ## CAUTION
 
 WORK IN PROGRESS!!!!
