@@ -50,9 +50,6 @@ cask "insomnia"
 # postgres auto-complete and syntax highlighting from the command line
 #brew "pgcli"
 
-# git
-brew  "github"
-
 # Browsers
 cask "google-chrome"
 cask "firefox"
