@@ -21,11 +21,7 @@ elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
 	MAC_OS_NAME = "catalina"
 fi
 
-if [ "$MAC_OS_NAME" == "mojave" ]; then
-	BREWFILE="$CONFIG_PATH/Brewfile"
-elif [ "$MAC_OS_NAME" == "catalina" ]; then
-	BREWFILE="$CONFIG_PATH/Brewfile"
-fi
+BREWFILE="$CONFIG_PATH/Brewfile"
 
 # import the functions
 source "$FUNCTIONS"

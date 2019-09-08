@@ -36,4 +36,4 @@ cask "vlc"
 cask "slack"
 
 # we're GCP command line tools
-cask google-cloud-sdk
+cask "google-cloud-sdk"
