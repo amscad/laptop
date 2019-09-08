@@ -13,18 +13,6 @@ cask "gpg-suite"
 # vpn - because security
 cask "tunnelbear"
 
-<<<<<<< HEAD
-=======
-# Monitor your outgoing network connections
-# cask "little-snitch"
-
-# anti-virus - because even macs get viruses
-# cask "avira-antivirus"
-
-# Image manipulation
-# brew "imagemagick"
-
->>>>>>> 3d536831b79cbaece2edc6a8e75c236e8f9b2470
 # programming languages and things that are needed, and cant really be used via a docker container
 brew "cmake"
 brew "python3"
@@ -32,14 +20,6 @@ brew "zsh"
 
 # should try these from a docker container
 brew "go"
-<<<<<<< HEAD
-=======
-# brew "scala"
-# brew "sbt"
-
-# fancy diffs with git
-# brew "diff-so-fancy"
->>>>>>> 3d536831b79cbaece2edc6a8e75c236e8f9b2470
 
 brew "libpng"
 
