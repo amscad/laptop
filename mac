@@ -8,21 +8,36 @@ BIN_PATH="$SCRIPT_PATH/bin"
 
 # set some vars to references from one place
 FUNCTIONS="$BIN_PATH/functions.sh"
-BREWFILE="$CONFIG_PATH/Brewfile"
+
+# work out which version of mac os we are running, as catalina is currently in beta
+# and I want to limit what is installed
+MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
+
+if [ "$MAJOR_MAC_VERSION" == "10.14" ]; then
+	$MAC_OS_NAME = "mojave"
+elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
+	$MAC_OS_NAME = "catalina"
+fi
+
+if [ "$MAC_OS_NAME" == "mojave"]; then
+	BREWFILE="$CONFIG_PATH/Brewfile"
+elif [ "$MAC_OS_NAME" == "catalina"]
+	BREWFILE="$CONFIG_PATH/Brewfile"
+fi
 
 # import the functions
 source "$FUNCTIONS"
 
-fancy_echo "##################################################################"
-fancy_echo "       This is the bootstap script to setup your mac as a         "
-fancy_echo "       development machine, to get you running asap               "
-fancy_echo "       This is going to ask for your password.  Only provide      "
-fancy_echo "       it if you have read this script and fully understand       "
-fancy_echo "       what is it going to do to your system                      "
-fancy_echo "                                                                  "
-fancy_echo "     **************** YOU HAVE BEEN WARNED	*****************     "
-fancy_echo "                                                                  "
-fancy_echo "##################################################################"
+echo "##################################################################"
+echo "       This is the bootstap script to setup your mac as a         "
+echo "       development machine, to get you running asap               "
+echo "       This is going to ask for your password.  Only provide      "
+echo "       it if you have read this script and fully understand       "
+echo "       what is it going to do to your system                      "
+echo "                                                                  "
+echo "     **************** YOU HAVE BEEN WARNED	*****************     "
+echo "                                                                  "
+echo "##################################################################"
 
 
 # shellcheck disable=SC2154
@@ -58,11 +73,11 @@ then
 
 ########################[ Updating Mac OS ]####################################
 # Update mac software
-	fancy_echo "Updating mac os"
+	echo "Updating mac os"
 		sudo softwareupdate -i -a
 
 ########################[ Command line xcode ]#################################
-	fancy_echo "Install Apple command line tools"
+	echo "Install Apple command line tools"
 	COMMANDLINE_TOOLS="/Library/Developer/CommandLineTools"
 	if [ ! -d "$COMMANDLINE_TOOLS" ]; then
 		xcode-select --install
@@ -70,7 +85,7 @@ then
 
 
 ########################[ Check homebrew is installed ]########################
-	fancy_echo "Using homebrew to install software "
+	echo "Using homebrew to install software "
 	# Set the install location for homebrew... use the default.
 	HOMEBREW_PREFIX="/usr/local"
 
@@ -86,7 +101,7 @@ then
 
 	# Check to see if homebrew is installed, and if not then install it
 	if ! command -v brew >/dev/null; then
-		fancy_echo "Installing Homebrew ..."
+		echo "Installing Homebrew ..."
 			curl -fsS \
 				'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
@@ -94,16 +109,16 @@ then
 	fi
 
 	if brew list | grep -Fq brew-cask; then
-		fancy_echo "Uninstalling old Homebrew-Cask ..."
+		echo "Uninstalling old Homebrew-Cask ..."
 		brew uninstall --force brew-cask
 	fi
 
 ########################[ Install homebrew apps ]##############################
-	fancy_echo "Updating Homebrew formulae ..."
+	echo "Updating Homebrew formulae ..."
 	brew update --force 					 # https://github.com/Homebrew/brew/issues/1151
-	fancy_echo "Updated forcefully"
+	echo "Updated forcefully"
 
-	fancy_echo "Installing apps from Brewfile"
+	echo "Installing apps from Brewfile"
 	# generic apps for all engineers
 	if brew bundle --file="$BREWFILE"; then
 		echo "All items in Brewfile were installed successfully."
@@ -114,14 +129,14 @@ then
 ########################[ Run user customisations ]############################
 # run anything from the user local file
 	if [ -f "$USER.local" ]; then
-		fancy_echo "Running customisations using preferences from $USER.local"
+		echo "Running customisations using preferences from $USER.local"
 		# shellcheck disable=SC1090
 		sh "$USER.local"
 	fi
 
 ########################[ OSX Customisations ]#################################
 	# if [ -f "osx-customisations.sh" ]; then
-	# fancy_echo "Customising OSX... (inspired by https://github.com/mathiasbynens/dotfiles)"
+	# echo "Customising OSX... (inspired by https://github.com/mathiasbynens/dotfiles)"
 	# 	# shellcheck disable=SC1090
 	#  	sh osx-customisations.sh
 	# fi
@@ -130,7 +145,7 @@ then
 ########################[ Linux Customisations ]###############################
 elif [ "$RUNNING_SYSTEM" == "Linux" ]
 then
-	fancy_echo "Install for Linux"
+	echo "Install for Linux"
 	sh linux.sh
 else
 	fail "Unfortunately your system is not currently supported with this script"
@@ -138,10 +153,10 @@ fi
 
 
 ########################[ GIT ]################################################
-# fancy_echo "Setup github account on machine"
+# echo "Setup github account on machine"
 #   sh git_config.sh
 
-brew cleanup --force
+brew cleanup
 rm -f -r /Library/Caches/Homebrew/*
 
-fancy_echo "DONE!"
+echo "DONE!"

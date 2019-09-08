@@ -94,18 +94,18 @@ if [ -f "~/.gitignore_global" ]; then
 fi
 
 
-# Install Talisman, from Throughbot.  Adds a git hook to validate a change set 
-# to be pushed to a git repo, such as SSH keys, auth tokens, private keys etc.  
-# This is barebones install at the moment, but could be customised
-# Talisman is added as a git hook to all repos, so added to git-templates
-# Check to make sure there isnt already a pre-push hook
-fancy_echo "Installing Talisman as a pre-commit hook"
-if [ ! -f "$HOME/.git-templates/hooks/pre-push" ]; then 
-  curl https://thoughtworks.github.io/talisman/install.sh > "$HOME/install-talisman.sh"
-  # The talisman script checks the local .git/hooks repo first to see if it is 
-  # installed.  Force the check to run from the users home folder, but CD'ing to it
-  cd $HOME
-  chmod +x install-talisman.sh
-  ./install-talisman.sh
-  rm install-talisman.sh
-fi 
+# # Install Talisman, from Throughbot.  Adds a git hook to validate a change set 
+# # to be pushed to a git repo, such as SSH keys, auth tokens, private keys etc.  
+# # This is barebones install at the moment, but could be customised
+# # Talisman is added as a git hook to all repos, so added to git-templates
+# # Check to make sure there isnt already a pre-push hook
+# fancy_echo "Installing Talisman as a pre-commit hook"
+# if [ ! -f "$HOME/.git-templates/hooks/pre-push" ]; then 
+#   curl https://thoughtworks.github.io/talisman/install.sh > "$HOME/install-talisman.sh"
+#   # The talisman script checks the local .git/hooks repo first to see if it is 
+#   # installed.  Force the check to run from the users home folder, but CD'ing to it
+#   cd $HOME
+#   chmod +x install-talisman.sh
+#   ./install-talisman.sh
+#   rm install-talisman.sh
+# fi 

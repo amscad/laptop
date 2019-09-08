@@ -10,15 +10,34 @@ BIN_PATH="$SCRIPT_PATH/bin"
 
 # set some vars to references from one place
 FUNCTIONS="$BIN_PATH/functions.sh"
-BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
 
-# import the functions
+# work out which version of mac os we are running, as catalina is currently in beta
+# and I want to limit what is installed
+MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
+
+if [ "$MAJOR_MAC_VERSION" == "10.14" ]; then
+	MAC_OS_NAME="mojave"
+elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
+	MAC_OS_NAME="catalina"
+fi
+
+if [ "$MAC_OS_NAME" == "mojave" ]; then
+  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
+elif [ "$MAC_OS_NAME" == "catalina" ]; then
+  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.catalina"
+fi
+
+echo "Mac OS = $MAC_OS_NAME"
+echo "Mac OS version = $MAJOR_MAC_VERSION"
+echo "Brewfile local = $BREWFILE_LOCAL"
+
+# import useful functions
 source "$FUNCTIONS"
 
 echo "Adding apps and preferences from $USER.local"
 
 ########################[ User specific apps ]#################################
-fancy_echo "Installing user specific apps from Brewfile.local"
+echo "Installing user specific apps from Brewfile.local"
 # generic apps for all engineers
 if brew bundle --file="$BREWFILE_LOCAL"; then
   echo "All items in Brewfile were installed successfully."
@@ -27,12 +46,12 @@ else
 fi
 
 ########################[ Github ]#############################################
-fancy_echo "Setup github"
+echo "Setup github"
    sh "$BIN_PATH/git_config.sh"
 
-########################[ VIM ]################################################
-fancy_echo "Setup vim"
-   sh "$BIN_PATH/vim.sh"
+# ########################[ VIM ]################################################
+# echo "Setup vim"
+#    sh "$BIN_PATH/vim.sh"
 
 ########################[ osx customisations ]#################################
 # run anything from the user local file
@@ -49,7 +68,7 @@ if [ -f "$BIN_PATH/osx-customisations.sh" ]; then
 fi
 
 ########################[ asdf vm for ruby etc ]###############################
-fancy_echo "Setup ruby and node"
+echo "Setup ruby and node"
   sh "$BIN_PATH/asdfvm.sh"
 
 ###############################[ hosts customisations ]########################
@@ -61,5 +80,11 @@ fancy_echo "Setup ruby and node"
 
 ########################[ OH MY ZSH ]##########################################
 # move change to using zsh to the end to allow the script to complete
-fancy_echo "Setup oh-my-zsh"
+echo "Setup oh-my-zsh"
    sh "$BIN_PATH/zsh.sh"
+
+########################[ java using sdkman    ]###############################
+curl -s https://get.sdkman.io | bash 
+sdk install java 8.0.222.hs-adpt
+sdk install gradle 2.4
+sdk install maven 
