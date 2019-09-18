@@ -1,0 +1,31 @@
+#casks - for extra funtionality
+tap "homebrew/bundle"
+tap "thoughtbot/formulae"
+tap "buo/cask-upgrade"                  # to upgrade all the apps installed by homebrew cask
+tap "homebrew/core"
+tap "homebrew/services"
+tap "caskroom/versions"                 # for java 1.8
+tap "caskroom/cask"
+tap "universal-ctags/universal-ctags"
+
+
+# cask tools
+cask "gpg-suite"
+
+# vpn - because security
+cask "tunnelbear"
+
+
+# # Free programming editors - uncomment the one that you want to install
+cask "visual-studio-code"
+# UI to manage the Jetbrains IDE suite
+cask "jetbrains-toolbox"
+
+
+# Browsers
+cask "google-chrome"
+cask "firefox"
+cask "brave-browser"
+
+
+cask "lastpass"
