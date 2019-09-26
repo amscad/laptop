@@ -21,11 +21,8 @@ elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
 	MAC_OS_NAME="catalina"
 fi
 
-if [ "$MAC_OS_NAME" == "mojave" ]; then
-  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
-elif [ "$MAC_OS_NAME" == "catalina" ]; then
-  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.catalina"
-fi
+# derive the brewfile to use
+BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.$MAC_OS_NAME"
 
 echo "Mac OS = $MAC_OS_NAME"
 echo "Mac OS version = $MAJOR_MAC_VERSION"
