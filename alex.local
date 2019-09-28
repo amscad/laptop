@@ -82,6 +82,10 @@ echo "Setup oh-my-zsh"
 
 ########################[ java using sdkman    ]###############################
 curl -s https://get.sdkman.io | bash 
+
+# make sure sdkman is loaded before adding sdks
+source "/Users/alex/.sdkman/bin/sdkman-init.sh"
+
 sdk install java 8.0.222.hs-adpt
 sdk install gradle 2.4
 sdk install maven 
