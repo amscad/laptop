@@ -8,7 +8,6 @@ tap "homebrew/cask-versions"           # for java 1.8
 tap "homebrew/cask-cask"
 tap "universal-ctags/universal-ctags"
 
-
 # cask tools
 cask "gpg-suite"
 
