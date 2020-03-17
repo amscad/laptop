@@ -54,3 +54,14 @@ cask "soundflower"
 
 cask "lastpass"
 cask "dashlane"
+
+# quicklook plugins
+# https://github.com/sindresorhus/quick-look-plugins
+cask "qlcolorcode"
+cask "qlstephen" 
+cask "qlmarkdown" 
+cask "quicklook-json"
+cask "qlimagesize" 
+cask "suspicious-package"
+cask "quicklookase"
+cask "qlvideo"

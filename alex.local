@@ -38,6 +38,10 @@ echo "Installing user specific apps from Brewfile.local"
 # generic apps for all engineers
 if brew bundle --file="$BREWFILE_LOCAL"; then
   echo "All items in Brewfile were installed successfully."
+  # for quicklook plugins
+  # https://github.com/sindresorhus/quick-look-plugins
+  xattr -r ~/Library/QuickLook
+  xattr -d -r com.apple.quarantine ~/Library/QuickLook
 else
   echo "Some items in Brewfile were not installed successfully."
 fi
@@ -86,6 +90,6 @@ curl -s https://get.sdkman.io | bash
 # make sure sdkman is loaded before adding sdks
 source "/Users/alex/.sdkman/bin/sdkman-init.sh"
 
-sdk install java 8.0.222.hs-adpt
+sdk install java 8.0.242.hs-adpt
 sdk install gradle 2.4
 sdk install maven 
