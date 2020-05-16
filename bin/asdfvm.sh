@@ -13,7 +13,7 @@ source "$BIN_PATH/functions.sh"
 ###################################[ version manager ]########################
 echo "Configuring asdf version manager..."
 if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
   append_to_zshrc "source $HOME/.asdf/asdf.sh" 1
   append_to_zshrc "source $HOME/.asdf/completions/asdf.bash" 1
 fi
