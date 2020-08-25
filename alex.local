@@ -69,7 +69,7 @@ if [ -f "$BIN_PATH/osx-customisations.sh" ]; then
 fi
 
 ########################[ asdf vm for ruby etc ]###############################
-echo "Setup ruby and node"
+echo "Setup ruby, node, java, gradle, and maven"
   sh "$BIN_PATH/asdfvm.sh"
 
 ###############################[ hosts customisations ]########################
@@ -83,13 +83,3 @@ echo "Setup ruby and node"
 # move change to using zsh to the end to allow the script to complete
 echo "Setup oh-my-zsh"
    sh "$BIN_PATH/zsh.sh"
-
-########################[ java using sdkman    ]###############################
-curl -s https://get.sdkman.io | bash 
-
-# make sure sdkman is loaded before adding sdks
-source "/Users/alex/.sdkman/bin/sdkman-init.sh"
-
-sdk install java 8.0.242.hs-adpt
-sdk install gradle 2.4
-sdk install maven 
