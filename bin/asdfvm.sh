@@ -47,6 +47,8 @@ install_asdf_plugin "python" "https://github.com/danhper/asdf-python"
 
 install_asdf_plugin "neovim" "https://github.com/richin13/asdf-neovim"
 
+install_asdf_plugin "postgres"
+
 install_asdf_language() {
   local language="$1"
   local version="$2"
@@ -93,7 +95,7 @@ echo "Installing latest gradle"
 install_asdf_language "gradle" "latest"
 
 echo "Installing latest groovy"
-install_asdf_language "groovy" "latest"
+install_asdf_language "groovy" "groovy-binary-2.4.3"
 echo "Installing latest grails"
 install_asdf_language "grails" "latest"
 echo "Installing latest kotlin"
@@ -111,3 +113,6 @@ install_asdf_language "python" "latest"
 
 echo "Installing stable neovim"
 install_asdf_language "neovim" "stable"
+
+echo "Installing latest stable postgresql"
+install_asdf_language "postgres" "latest"
