@@ -23,6 +23,7 @@ brew "hub"
 # Programming language prerequisites and package managers
 brew "libyaml"              # should come after openssl
 brew "coreutils"
+brew "jq"
 
 # development tools
 cask "docker"           # docker - containerise all the things
