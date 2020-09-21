@@ -76,7 +76,8 @@ cask "dashlane"
 
 # quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
-cask "qlcolorcode"
+brew "highlight"
+cask "qlcolorcode"      # needs highlight
 cask "qlstephen" 
 cask "qlmarkdown" 
 cask "quicklook-json"
