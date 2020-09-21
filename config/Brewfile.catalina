@@ -4,7 +4,6 @@ tap "thoughtbot/formulae"
 tap "buo/cask-upgrade"                  # to upgrade all the apps installed by homebrew cask
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/cask-versions"           # for java 1.8
 tap "homebrew/cask-cask"
 tap "universal-ctags/universal-ctags"
 
@@ -14,6 +13,19 @@ cask "gpg-suite"
 # vpn - because security
 cask "tunnelbear"
 
+# programming languages and things that are needed, and cant really be used via a docker container
+brew "cmake"
+brew "python3"
+brew "zsh"
+
+# should try these from a docker container
+brew "go"
+
+# Editors and IDEs
+brew "vim"
+# brew "macvim"
+brew "neovim"                     # switching to neovim for a modern version of vim
+
 
 # # Free programming editors - uncomment the one that you want to install
 cask "visual-studio-code"
@@ -22,6 +34,9 @@ cask "textmate"
 # UI to manage the Jetbrains IDE suite
 cask "jetbrains-toolbox"
 
+# A command line http client, like CURL, only more fun to use
+brew "httpie"
+
 # Mac app for REST requests
 cask "insomnia"
 
@@ -29,9 +44,13 @@ cask "insomnia"
 cask "google-chrome"
 cask "firefox"
 cask "brave-browser"
+cask "vivladi"
+cask "firefox-developer-edition"
 
 # useful utils for backing up
 cask "google-drive-file-stream"
+
+cask "kindle"
 
 cask "bettertouchtool"
 cask "balsamiq-mockups"
