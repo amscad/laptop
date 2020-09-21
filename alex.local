@@ -16,9 +16,9 @@ FUNCTIONS="$BIN_PATH/functions.sh"
 MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
 
 if [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
-  MAC_OS_NAME=“catalina”
+	MAC_OS_NAME=catalina
 else
-	MAC_OS_NAME="mojave"
+	MAC_OS_NAME=mojave
 fi
 
 # derive the brewfile to use
