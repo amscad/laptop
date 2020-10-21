@@ -39,9 +39,10 @@ install_asdf_plugin "groovy" "https://github.com/weibemoura/asdf-groovy.git"
 install_asdf_plugin "grails" "https://github.com/weibemoura/asdf-grails.git"
 install_asdf_plugin "kotlin" "https://github.com/missingcharacter/asdf-kotlin.git"
 
-install_asdf_plugin "dart" "https://github.com/patoconnor43/asdf-dart.git"
-install_asdf_plugin "flutter" "https://github.com/oae/asdf-flutter"
-install_asdf_plugin "firebase" "https://github.com/jthegedus/asdf-firebase.git"
+# Use brew to manage flutter and dart
+# install_asdf_plugin "dart" "https://github.com/patoconnor43/asdf-dart.git"
+# install_asdf_plugin "flutter" "https://github.com/oae/asdf-flutter"
+# install_asdf_plugin "firebase" "https://github.com/jthegedus/asdf-firebase.git"
 
 install_asdf_plugin "python" "https://github.com/danhper/asdf-python"
 

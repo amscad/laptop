@@ -74,6 +74,10 @@ cask "soundflower"
 cask "lastpass"
 cask "dashlane"
 
+cask "flutter"
+brew "firebase-cli"
+cask "firebase-admin"
+
 # quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
 brew "highlight"
