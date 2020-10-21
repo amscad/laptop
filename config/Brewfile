@@ -4,7 +4,6 @@ tap "thoughtbot/formulae"
 tap "buo/cask-upgrade"                  # to upgrade all the apps installed by homebrew cask
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/cask-cask"
 tap "universal-ctags/universal-ctags"
 
 # Set applications directory
