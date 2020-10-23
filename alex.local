@@ -79,7 +79,7 @@ echo "Setup oh-my-zsh"
    sh "$BIN_PATH/zsh.sh"
 
 echo "Adding ability to switch JVM version to .zshrc file"
-  
+  # https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114
   append_to_zshrc "export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)" 1
   append_to_zshrc "export JAVA_11_HOME=$(/usr/libexec/java_home -v11)" 1
   append_to_zshrc "export JAVA_14_HOME=$(/usr/libexec/java_home -v14)" 1
