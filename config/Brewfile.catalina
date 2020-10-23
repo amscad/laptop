@@ -46,6 +46,9 @@ cask "brave-browser"
 cask "vivladi"
 cask "firefox-developer-edition"
 
+# VM
+cask "vmware-fusion"
+
 # useful utils for backing up
 cask "google-drive-file-stream"
 
