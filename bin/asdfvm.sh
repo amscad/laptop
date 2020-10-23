@@ -13,7 +13,7 @@ source "$BIN_PATH/functions.sh"
 ###################################[ version manager ]########################
 echo "Configuring asdf version manager..."
 if [ ! -d "$HOME/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0-rc1
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
   append_to_zshrc "source $HOME/.asdf/asdf.sh" 1
   append_to_zshrc "source $HOME/.asdf/completions/asdf.bash" 1
 fi
@@ -32,23 +32,23 @@ source "$HOME/.asdf/asdf.sh"
 install_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 
-install_asdf_plugin "java" "https://github.com/halcyon/asdf-java.git"
-install_asdf_plugin "maven" "https://github.com/halcyon/asdf-maven"
-install_asdf_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git"
-install_asdf_plugin "groovy" "https://github.com/weibemoura/asdf-groovy.git"
-install_asdf_plugin "grails" "https://github.com/weibemoura/asdf-grails.git"
-install_asdf_plugin "kotlin" "https://github.com/missingcharacter/asdf-kotlin.git"
+# install_asdf_plugin "java" "https://github.com/halcyon/asdf-java.git"
+# install_asdf_plugin "maven" "https://github.com/halcyon/asdf-maven"
+# install_asdf_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git"
+# install_asdf_plugin "groovy" "https://github.com/weibemoura/asdf-groovy.git"
+# install_asdf_plugin "grails" "https://github.com/weibemoura/asdf-grails.git"
+# install_asdf_plugin "kotlin" "https://github.com/missingcharacter/asdf-kotlin.git"
 
 # Use brew to manage flutter and dart
 # install_asdf_plugin "dart" "https://github.com/patoconnor43/asdf-dart.git"
 # install_asdf_plugin "flutter" "https://github.com/oae/asdf-flutter"
 # install_asdf_plugin "firebase" "https://github.com/jthegedus/asdf-firebase.git"
 
-install_asdf_plugin "python" "https://github.com/danhper/asdf-python"
+# install_asdf_plugin "python" "https://github.com/danhper/asdf-python"
 
-install_asdf_plugin "neovim" "https://github.com/richin13/asdf-neovim"
+# install_asdf_plugin "neovim" "https://github.com/richin13/asdf-neovim"
 
-install_asdf_plugin "postgres"
+# install_asdf_plugin "postgres"
 
 install_asdf_language() {
   local language="$1"
@@ -83,37 +83,37 @@ echo "Installing latest grunt"
 bash "npm install -g grunt"
 
 
-echo "Installing Java 8"
-install_asdf_language "java" "adoptopenjdk-8.0.265+1.openj9-0.21.0"
+# echo "Installing Java 8"
+# install_asdf_language "java" "adoptopenjdk-8.0.265+1.openj9-0.21.0"
 
-echo "Installing Java 11"
-install_asdf_language "java" "adoptopenjdk-11.0.8+10.openj9-0.21.0"
+# echo "Installing Java 11"
+# install_asdf_language "java" "adoptopenjdk-11.0.8+10.openj9-0.21.0"
 
-echo "Installing latest Maven"
-install_asdf_language "maven" "latest"
+# echo "Installing latest Maven"
+# install_asdf_language "maven" "latest"
 
-echo "Installing latest gradle"
-install_asdf_language "gradle" "latest"
+# echo "Installing latest gradle"
+# install_asdf_language "gradle" "latest"
 
-echo "Installing latest groovy"
-install_asdf_language "groovy" "groovy-binary-2.4.3"
-echo "Installing latest grails"
-install_asdf_language "grails" "latest"
-echo "Installing latest kotlin"
-install_asdf_language "kotlin" "latest"
+# echo "Installing latest groovy"
+# install_asdf_language "groovy" "groovy-binary-2.4.3"
+# echo "Installing latest grails"
+# install_asdf_language "grails" "latest"
+# echo "Installing latest kotlin"
+# install_asdf_language "kotlin" "latest"
 
-echo "Installing latest dart"
-install_asdf_language "dart" "latest"
-echo "Installing latest flutter"
-install_asdf_language "flutter" "1.20.2-stable"
-echo "Installing latest firebase"
-install_asdf_language "firebase" "latest"
+# echo "Installing latest dart"
+# install_asdf_language "dart" "latest"
+# echo "Installing latest flutter"
+# install_asdf_language "flutter" "1.20.2-stable"
+# echo "Installing latest firebase"
+# install_asdf_language "firebase" "latest"
 
-echo "Installing latest python"
-install_asdf_language "python" "latest"
+# echo "Installing latest python"
+# install_asdf_language "python" "latest"
 
-echo "Installing stable neovim"
-install_asdf_language "neovim" "stable"
+# echo "Installing stable neovim"
+# install_asdf_language "neovim" "stable"
 
-echo "Installing latest stable postgresql"
-install_asdf_language "postgres" "latest"
+# echo "Installing latest stable postgresql"
+# install_asdf_language "postgres" "latest"

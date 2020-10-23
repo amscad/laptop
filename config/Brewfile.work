@@ -5,6 +5,7 @@ tap "buo/cask-upgrade"                  # to upgrade all the apps installed by h
 tap "homebrew/core"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
+tap "AdoptOpenJDK/openjdk"              # to install different updated major versions of java using openjdk
 
 # cask tools
 cask "gpg-suite"
@@ -14,8 +15,16 @@ brew "cmake"
 brew "python3"
 brew "zsh"
 
-# should try these from a docker container
-brew "go"
+brew "go"                       # should try these from a docker container
+cask "adoptopenjdk8"
+cask "adoptopenjdk11"
+cask "adoptopenjdk14"
+
+# supporting java tools
+brew "maven"
+brew "gradle"
+brew "groovy"
+brew "grails"
 
 brew "libpng"
 
@@ -51,9 +60,6 @@ cask "google-chrome"
 cask "firefox"
 cask "brave-browser"
 
-# VM
-cask "vmware-fusion8"
-
 # useful utils for backing up
 cask "google-drive-file-stream"
 
@@ -84,6 +90,16 @@ cask "the-unarchiver"
 # virtualbox - should be downloaded as a part of genymotion
 cask "virtualbox"
 
+# quicklook plugins
+# https://github.com/sindresorhus/quick-look-plugins
+brew "highlight"
+cask "qlcolorcode"      # needs highlight
+cask "qlstephen" 
+cask "qlmarkdown" 
 cask "quicklook-json"
+cask "qlimagesize" 
+cask "suspicious-package"
+cask "quicklookase"
+cask "qlvideo"
 
 cask "lastpass"
