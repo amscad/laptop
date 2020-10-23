@@ -15,14 +15,8 @@ FUNCTIONS="$BIN_PATH/functions.sh"
 # and I want to limit what is installed
 MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
 
-if [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
-	MAC_OS_NAME=catalina
-else
-	MAC_OS_NAME=mojave
-fi
-
 # derive the brewfile to use
-BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.$MAC_OS_NAME"
+BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
 
 echo "Mac OS = $MAC_OS_NAME"
 echo "Mac OS version = $MAJOR_MAC_VERSION"
