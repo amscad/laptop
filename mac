@@ -71,7 +71,7 @@ then
 ########################[ Updating Mac OS ]####################################
 # Update mac software
 	echo "Updating mac os"
-		sudo softwareupdate -i -a
+#		sudo softwareupdate -i -a
 
 ########################[ Command line xcode ]#################################
 	echo "Install Apple command line tools"

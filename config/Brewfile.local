@@ -51,7 +51,7 @@ cask "insomnia"
 cask "google-chrome"
 cask "firefox"
 cask "brave-browser"
-cask "vivladi"
+cask "vivaldi"
 cask "firefox-developer-edition"
 
 # VM
@@ -63,7 +63,7 @@ cask "google-drive-file-stream"
 cask "kindle"
 
 cask "bettertouchtool"
-cask "balsamiq-mockups"
+cask "balsamiq-wireframes"
 
 # Command line search tools
 brew "fzf"                          # fuzzy finder - written in go
@@ -87,6 +87,9 @@ cask "dashlane"
 cask "flutter"
 brew "firebase-cli"
 cask "firebase-admin"
+
+brew "rsync"          # latest rsync as macOS version is outdated and insecure
+cask "rsynxosx"       # gui for rsync, requires catalina
 
 # quicklook plugins
 # https://github.com/sindresorhus/quick-look-plugins
