@@ -264,6 +264,7 @@ print_warning() {
 print_comment() {
     print_in_purple "\n • $1\n\n"
 }
+
 set_trap() {
 
     trap -p "$1" | grep "$2" &> /dev/null \
