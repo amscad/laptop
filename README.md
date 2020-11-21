@@ -1,25 +1,25 @@
-# Laptop development setup script
-Sets up a newly imaged Mac for development, quickly using 
-common tools/apps used at the Telegraph
+# mac development setup script
+Sets up a new Mac for development, quickly using common tools/apps
 
 ## CAUTION
 
 WORK IN PROGRESS!!!!
 
-## Laptop
+## setup
 
-Laptop is a script to set up an macOS laptop/desktop for web and 
+"setup" is a script to set up an macOS laptop/desktop for web and 
 mobile development. 
 
 It can be run multiple times on the same machine safely.
 It installs, upgrades, or skips packages based on what is already installed 
 on the machine.
 
-## Note
-* This script *must* be run under the developers account and *not* the TMG admin account 
-as customisations are based on the developer "user" setup on the machine
+## prerequisites
+* This script *must* be run under the account of the "user" who will be using the machine, as customisations are based on the "user"
 
-* Developers requiring XCode must install XCode from the App store, which requires logging in to the App store
+* XCode must be installed XCode from the App store, before continuing.  You will be prompted if it is not installed
+
+* Git needs to be installed
 
 ## Attribution and thanks
 The ideas are borrowed from the following sources -
@@ -32,6 +32,7 @@ The ideas are borrowed from the following sources -
 * https://github.com/mathiasbynens/dotfiles
 * https://github.com/skwp/dotfiles
 * https://github.com/joshukraine/mac-bootstrap
+* https://github.com/alrra/dotfiles/ 
 
 Important scripts and files -
 * **bin/*.sh**: Scripts that will be run, depending on OS and can be used for customising your build
@@ -47,20 +48,18 @@ Important scripts and files -
 
 Clone the repo to a location on your machine
 
-	git clone git://github.com/telegraph/laptop.git ~/laptop 
+	git clone git://github.com/amscad/laptop.git ~/laptop 
 	cd ~/laptop 
 
 Rename (or copy) {USER}.local to *YOUR* user name. ie. bobs.local
       
       mv {USER}.local bobs.local
       
-Edit the config/settings file to add your github credentials.  If your machine has not been
-cloned by your systems admin, and you want to use this to setup your machine, uncomment the 
-machine settings and edit to your liking
+Edit the config/settings file to add your github credentials.  
 
 Run the main script (make sure you read it first.)
 
-      ./mac
+      ./setup
 
 1. mac - this will setup the default applications needed by most developers, using homebrew
 1. {USER}.local - this is where you add your customisations 
