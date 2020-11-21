@@ -73,6 +73,8 @@ set_xcode_developer_directory() {
 
 }
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 main() {
 
     install_xcode_command_line_tools
@@ -81,5 +83,4 @@ main() {
 
 }
 
-########################[ Command line xcode ]#####################################################
 main
