@@ -1,0 +1,51 @@
+#!/bin/bash
+declare -r GITHUB_REPOSITORY="amscad/laptop"
+
+declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
+declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/main"
+declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/src/os/utils.sh"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+declare dotfilesDirectory="$HOME/projects/laptop"
+declare skipQuestions=false
+
+# to get an idea of how long this will take
+START_TIME=$(date +"%T")
+
+# echo "##################################################################"
+# echo "       This is the bootstap script to setup my                    "
+# echo "                  apple silicon mac as a                          "
+# echo "       development machine, to get setup and running asap         "
+# echo "       This is going to ask for your password.  Only provide      "
+# echo "       it if you have read this script and fully understand       "
+# echo "       what is it going to do to your system                      "
+# echo "                                                                  "
+# echo "     **************** YOU HAVE BEEN WARNED    *****************   "
+# echo "                                                                  "
+# echo "##################################################################"
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "Running in $BASEDIR"
+
+# shellcheck disable=SC2154
+# Print out the failure when exiting the script
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+# exit if there is an error
+set -e
+
+# As of June 2019, macOS Catalina announced that they would be adopting zsh as their default shell in replacement of bash
+# This script assumes that the default shell is zsh, and updates it with oh-my-zsh as personal preference
+
+main() {
+    # ./bin/update_os_software.sh
+    # ./bin/xcode.sh
+    ./bin/install_homebrew.sh
+    # ./bin/add_brew_formulae.sh
+    # ./bin/install_brew_cask_formulae.sh
+    # ./bin/update_preferences.sh
+}
+
+main "$@"
