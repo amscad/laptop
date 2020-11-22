@@ -19,8 +19,12 @@ if [ "$MAJOR_MAC_VERSION" == "10.14" ]; then
 	MAC_OS_NAME="mojave"
 elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
 	MAC_OS_NAME="catalina"
+elif [ "$MAJOR_MAC_VERSION" == "11.0" ]; then
+	MAC_OS_NAME="bigsur"
 fi
 
+echo "$MAC_OS_NAME"
+exit 0
 BREWFILE="$CONFIG_PATH/Brewfile"
 
 # import the functions
@@ -71,13 +75,13 @@ then
 ########################[ Updating Mac OS ]####################################
 # Update mac software
 	echo "Updating mac os"
-#		sudo softwareupdate -i -a
+		sudo softwareupdate -i -a
 
 ########################[ Command line xcode ]#################################
 	echo "Install Apple command line tools"
 	COMMANDLINE_TOOLS="/Library/Developer/CommandLineTools"
 	if [ ! -d "$COMMANDLINE_TOOLS" ]; then
-#		xcode-select --install
+		xcode-select --install
 		echo "Commandline tools not found where expected, trying anyway"
 	fi
 
@@ -85,7 +89,11 @@ then
 ########################[ Check homebrew is installed ]########################
 	echo "Using homebrew to install software "
 	# Set the install location for homebrew... use the default.
-	HOMEBREW_PREFIX="/usr/local"
+	if [ "$MAC_OS_NAME" == "bigsur" ]; then
+		HOMEBREW_PREFIX="/opt/homebrew"
+	else 
+		HOMEBREW_PREFIX="/usr/local"
+	fi
 
 	if [ -d "$HOMEBREW_PREFIX" ]; then
 		if ! [ -r "$HOMEBREW_PREFIX" ]; then
