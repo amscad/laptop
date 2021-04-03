@@ -42,7 +42,8 @@ set -e
 main() {
     # ./bin/update_os_software.sh
     # ./bin/xcode.sh
-    ./bin/install_homebrew.sh
+    ./bin/zsh.sh
+    # ./bin/install_homebrew.sh
     # ./bin/add_brew_formulae.sh
     # ./bin/install_brew_cask_formulae.sh
     # ./bin/update_preferences.sh
