@@ -2,8 +2,6 @@
 tap "homebrew/bundle"                     # bundler for non ruby dependencies
 tap "buo/cask-upgrade"                    # to upgrade all the apps installed by homebrew cask
 tap "homebrew/core"                       # default tap installed - for linux use "homebrew/linux-brew/core"
-tap "homebrew/services"                   # install and manage services with macOS's launchctl
-tap "universal-ctags/universal-ctags"
 
 # cask tools
 cask "gpg-suite"
@@ -14,7 +12,7 @@ cask "tunnelbear"
 # programming languages and things that are needed, and cant really be used via a docker container
 brew "cmake"
 brew "python3"
-# brew "zsh"                                # my preferred, but installed by default on bigsur
+brew "zsh"                                # my preferred, but installed by default on bigsur
 
 brew "go"                                   # should try these from a docker container
 #cask "adoptopenjdk8"

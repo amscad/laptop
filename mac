@@ -57,7 +57,7 @@ your password.
 
 "
 
-ask_for_confirmation "Do you want to continue?"
+ask_for_confirmation "Do you want to continue?\n\n"
 if answer_is_no; then 
 	exit 0
 fi

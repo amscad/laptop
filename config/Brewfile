@@ -2,14 +2,8 @@
 tap "homebrew/bundle"                     # bundler for non ruby dependencies
 tap "buo/cask-upgrade"                    # to upgrade all the apps installed by homebrew cask
 tap "homebrew/core"                       # default tap installed - for linux use "homebrew/linux-brew/core"
-tap "homebrew/services"                   # install and manage services with macOS's launchctl
-tap "universal-ctags/universal-ctags"
-
-# Set applications directory
-cask_args appdir: "/Applications"
 
 # Unix tools
-brew "universal-ctags", args: ["HEAD"]
 brew "git"
 brew "openssl"
 brew "readline"     # Utilities that one needs....
@@ -23,6 +17,8 @@ brew "coreutils"
 brew "jq"
 
 # development tools
+brew "go"               # needed for docker
+brew "go-md2man"        # needed for docker
 cask "docker"           # docker - containerise all the things
 cask "iterm2"           # item - terminal alternative
 cask "postman"          # Postman - for API development and testing
