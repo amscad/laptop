@@ -31,6 +31,15 @@ install_homebrew() {
 
 }
 
+uninstall_homebrew() {
+    if cmd_exists "brew"; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+    fi
+
+    print_result $? "Homebrew"
+
+}
+
 opt_out_of_analytics() {
 
     local path=""
