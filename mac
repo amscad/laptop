@@ -21,6 +21,8 @@ elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
 	MAC_OS_NAME="catalina"
 elif [ "$MAJOR_MAC_VERSION" == "11.0" ]; then
 	MAC_OS_NAME="bigsur"
+else 
+	MAC_OS_NAME="bigsur"
 fi
 
 echo "$MAC_OS_NAME"
@@ -111,7 +113,7 @@ then
 			#curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-			export PATH="/usr/local/bin:$PATH"
+			export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 	fi
 
 	if brew list | grep -Fq brew-cask; then
