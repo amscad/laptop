@@ -149,13 +149,6 @@ then
 		fi
 	fi
 
-########################[ OSX Customisations ]#################################
-	# if [ -f "osx-customisations.sh" ]; then
-	# echo "Customising OSX... (inspired by https://github.com/mathiasbynens/dotfiles)"
-	# 	# shellcheck disable=SC1090
-	#  	sh osx-customisations.sh
-	# fi
-
 ###############################################################################
 ########################[ Linux Customisations ]###############################
 elif [ "$RUNNING_SYSTEM" == "Linux" ]
