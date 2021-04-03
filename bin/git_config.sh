@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Get the config path - used to include other files 
+# Get the some path - used to include other files 
 SCRIPT_PATH=`dirname "$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"`
 PARENT_PATH=`dirname "$SCRIPT_PATH"`
-CONFIG_PATH="$PARENT_PATH/config"
-BIN_PATH="$PARENT_PATH/bin"
-source "$BIN_PATH/functions.sh"
+CONFIG_PATH="$SCRIPT_PATH/config"
+BIN_PATH="$SCRIPT_PATH/bin"
+
+# set some vars to references from one place
+FUNCTIONS="$BIN_PATH/functions.sh"
+UTILS="$BIN_PATH/utils.sh"
 
 ##########################################[ Setup Git ]########################
 # setup git, but only if this is the first run
