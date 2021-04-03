@@ -1,9 +1,8 @@
 #casks - for extra funtionality
-tap "homebrew/bundle"
-tap "thoughtbot/formulae"
-tap "buo/cask-upgrade"                  # to upgrade all the apps installed by homebrew cask
-tap "homebrew/core"
-tap "homebrew/services"
+tap "homebrew/bundle"                     # bundler for non ruby dependencies
+tap "buo/cask-upgrade"                    # to upgrade all the apps installed by homebrew cask
+tap "homebrew/core"                       # default tap installed - for linux use "homebrew/linux-brew/core"
+tap "homebrew/services"                   # install and manage services with macOS's launchctl
 tap "universal-ctags/universal-ctags"
 
 # Set applications directory
