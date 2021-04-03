@@ -1,13 +1,16 @@
 # mac development setup script
 Sets up a new Mac for development, quickly using common tools/apps
 
+For running under/using rosetta2, commands need to be prefixed by 
+"arch -x86_64 /bin/bash -c "
+
 ## CAUTION
 
 WORK IN PROGRESS!!!!
 
 ## setup
 
-"setup" is a script to set up an macOS laptop/desktop for web and 
+"setup" is a script to set up an fresh macOS laptop/desktop for web and 
 mobile development. 
 
 It can be run multiple times on the same machine safely.
@@ -157,14 +160,6 @@ The example file provides the following
 [ASDF]: https://github.com/asdf-vm/asdf
 [Yarn]: https://yarnpkg.com/en/
 
-It should take less than 15 minutes to install (depends on your machine).
-
-## Talisman prepush hook
-Talisman validates the outgoing changeset for things that look suspicious - such 
-as authorization tokens and private keys.  
-This is installed after git is added bia homebrew and requires user interaction.
-Please select (Y)es when prompted.  
-
 ## To Do Improvements
 1. Change the install to require curl to install the basic script rather than
 requiring git.  This would require a re-run to include customisations if the 
@@ -172,8 +167,5 @@ user wanted them - a good reason to the script and localisations can be re-run
 safely.
 1. Add some CI and testing - this cannot be run in a Docker container as it is
  mac specific.
-1. Automate the install of Talisman without requiring user input.  As the script 
-is written by Thoughtbot, and their install script is used as is and requires 
-user interation, this is left for another more ambitious contributor.
 1. Consider adding "type" specific environment.  For example, have an AEM dev for 
 AEM dev tools, one for mobile specific dev tools, etc.
