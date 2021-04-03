@@ -10,25 +10,26 @@ BIN_PATH="$SCRIPT_PATH/bin"
 
 # set some vars to references from one place
 FUNCTIONS="$BIN_PATH/functions.sh"
+UTILS="$BIN_PATH/utils.sh"
 
-# work out which version of mac os we are running, as catalina is currently in beta
-# and I want to limit what is installed
-MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
-
-# derive the brewfile to use
-BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
-
-echo "Mac OS = $MAC_OS_NAME"
-echo "Mac OS version = $MAJOR_MAC_VERSION"
-echo "Brewfile local = $BREWFILE_LOCAL"
-
-# import useful functions
+# import the functions
 source "$FUNCTIONS"
+source "$UTILS"
 
-echo "Adding apps and preferences from $USER.local"
+# work out which version of mac os we are running needed 
+# as the HOMEBREW_PREFIX needs to be set differently and 
+# I want to control what to install depending on the OS
+MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1}')
+MINOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $2}')
+
+if [ "$MAJOR_MAC_VERSION" == "10" ]; then
+  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.local"
+else
+  BREWFILE_LOCAL="$CONFIG_PATH/Brewfile.bigsur.local"
+fi
 
 ########################[ User specific apps ]#################################
-echo "Installing user specific apps from Brewfile.local"
+echo "Installing user specific apps from $BREWFILE_LOCAL"
 # generic apps for all engineers
 if brew bundle --file="$BREWFILE_LOCAL"; then
   echo "All items in Brewfile were installed successfully."
@@ -49,16 +50,17 @@ echo "Setup github"
 #    sh "$BIN_PATH/vim.sh"
 
 ########################[ osx customisations ]#################################
-# run anything from the user local file
-echo "Running OSX customisations"
-if [ -f "$BIN_PATH/osx-customisations.sh" ]; then
-  if [ -f "$HOME/.osx-customisations-run" ]; then
+if [ -f "$BIN_PATH/osx-customisations.sh" ]; then             # is there a customisation script
+  if [ -f "$HOME/.osx-customisations-run" ]; then             # already run
     echo "Have already run the customisations - skipping"
   else
-    echo "Running your customizations from osx-customisations.sh ..."
-    # shellcheck disable=SC1090
-    . "$BIN_PATH/osx-customisations.sh"
-    touch "$HOME/.osx-customisations-run"
+    ask_for_confirmation "Do you want to apply the OSX customisations?"
+    if answer_is_yes; then
+      echo "Running your customizations from osx-customisations.sh ..."
+      # shellcheck disable=SC1090
+      . "$BIN_PATH/osx-customisations.sh"
+      touch "$HOME/.osx-customisations-run"
+    fi
   fi
 fi
 
