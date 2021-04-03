@@ -1,11 +1,9 @@
 #casks - for extra funtionality
-tap "homebrew/bundle"
-tap "thoughtbot/formulae"
-tap "buo/cask-upgrade"                  # to upgrade all the apps installed by homebrew cask
-tap "homebrew/core"
-tap "homebrew/services"
+tap "homebrew/bundle"                     # bundler for non ruby dependencies
+tap "buo/cask-upgrade"                    # to upgrade all the apps installed by homebrew cask
+tap "homebrew/core"                       # default tap installed - for linux use "homebrew/linux-brew/core"
+tap "homebrew/services"                   # install and manage services with macOS's launchctl
 tap "universal-ctags/universal-ctags"
-tap "AdoptOpenJDK/openjdk"              # to install different updated major versions of java using openjdk
 
 # cask tools
 cask "gpg-suite"
@@ -16,18 +14,18 @@ cask "tunnelbear"
 # programming languages and things that are needed, and cant really be used via a docker container
 brew "cmake"
 brew "python3"
-brew "zsh"
+# brew "zsh"                                # my preferred, but installed by default on bigsur
 
-brew "go"                       # should try these from a docker container
-cask "adoptopenjdk8"
-cask "adoptopenjdk11"
-cask "adoptopenjdk14"
+brew "go"                                   # should try these from a docker container
+#cask "adoptopenjdk8"
+#cask "adoptopenjdk11"
+#cask "adoptopenjdk14"
 
 # supporting java tools
-brew "maven"
-brew "gradle"
-brew "groovy"
-brew "grails"
+#brew "maven"
+#brew "gradle"
+#brew "groovy"
+#brew "grails"
 
 # Editors and IDEs
 brew "vim"
@@ -35,11 +33,11 @@ brew "vim"
 brew "neovim"                     # switching to neovim for a modern version of vim
 
 # Free programming editors - uncomment the one that you want to install
-cask "visual-studio-code"
-cask "textmate"
+#cask "visual-studio-code"
+#cask "textmate"
 
 # UI to manage the Jetbrains IDE suite
-cask "jetbrains-toolbox"
+#cask "jetbrains-toolbox"
 
 # A command line http client, like CURL, only more fun to use
 brew "httpie"
@@ -48,14 +46,14 @@ brew "httpie"
 cask "insomnia"
 
 # Browsers
-cask "google-chrome"
-cask "firefox"
-cask "brave-browser"
-cask "vivaldi"
-cask "firefox-developer-edition"
+#cask "google-chrome"
+#cask "firefox"
+#cask "brave-browser"
+#cask "vivaldi"
+#cask "firefox-developer-edition"
 
 # VM
-cask "vmware-fusion"
+#cask "vmware-fusion"
 
 # useful utils for backing up
 cask "google-drive-file-stream"
