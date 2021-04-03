@@ -1,7 +1,5 @@
 #!/bin/bash
 
-START_TIME=$(date +"%T")
-
 # Get the some path - used to include other files 
 SCRIPT_PATH=`dirname "$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"`
 PARENT_PATH=`dirname "$SCRIPT_PATH"`
@@ -10,38 +8,32 @@ BIN_PATH="$SCRIPT_PATH/bin"
 
 # set some vars to references from one place
 FUNCTIONS="$BIN_PATH/functions.sh"
-
-# work out which version of mac os we are running, as catalina is currently in beta
-# and I want to limit what is installed
-MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
-
-if [ "$MAJOR_MAC_VERSION" == "10.14" ]; then
-	MAC_OS_NAME="mojave"
-elif [ "$MAJOR_MAC_VERSION" == "10.15" ]; then
-	MAC_OS_NAME="catalina"
-elif [ "$MAJOR_MAC_VERSION" == "11.0" ]; then
-	MAC_OS_NAME="bigsur"
-else 
-	MAC_OS_NAME="bigsur"
-fi
-
-echo "$MAC_OS_NAME"
-exit 0
-BREWFILE="$CONFIG_PATH/Brewfile"
+UTILS="$BIN_PATH/utils.sh"
 
 # import the functions
 source "$FUNCTIONS"
+source "$UTILS"
 
-echo "##################################################################"
-echo "       This is the bootstap script to setup your mac as a         "
-echo "       development machine, to get you running asap               "
-echo "       This is going to ask for your password.  Only provide      "
-echo "       it if you have read this script and fully understand       "
-echo "       what is it going to do to your system                      "
-echo "                                                                  "
-echo "     **************** YOU HAVE BEEN WARNED	*****************     "
-echo "                                                                  "
-echo "##################################################################"
+START_TIME=$(date +"%T")
+print_comment "Started at $START_TIME"
+
+# work out which version of mac os we are running needed 
+# as the HOMEBREW_PREFIX needs to be set differently and 
+# I want to control what to install depending on the OS
+MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1}')
+MINOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $2}')
+
+if [ "$MAJOR_MAC_VERSION" == "10" ]; then
+	if [ "$MINOR_MAC_VERSION" == "14" ]; then
+		MAC_OS_NAME="mojave"
+	elif [ "$MINOR_MAC_VERSION" == "15" ]; then
+		MAC_OS_NAME="catalina"
+	fi
+elif [ "$MAJOR_MAC_VERSION" == "11" ]; then
+	MAC_OS_NAME="bigsur"
+else 
+	MAC_OS_NAME="unknown"
+fi
 
 
 # shellcheck disable=SC2154
@@ -52,15 +44,27 @@ trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 set -e
 
 
-echo "
-#########################################################################
+print_in_red "
+###############################################################################
+
 Your password (assuming you are setup as an admin) is need to install the 
-latest Max OS updates and to ensure permssions on homebrew are setup 
-correctly.
+latest Max OS updates and to ensure permssions on homebrew are setup correctly.
+
 Please make sure you have read this script and are happy to provide 
 your password.
-#########################################################################
+
+###############################################################################
+
 "
+
+ask_for_confirmation "Do you want to continue?"
+if answer_is_no; then 
+	exit 0
+fi
+
+print_comment  "Using settings for $MAC_OS_NAME"
+BREWFILE="$CONFIG_PATH/Brewfile"
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -109,6 +113,7 @@ then
 
 	# Check to see if homebrew is installed, and if not then install it
 	if ! command -v brew >/dev/null; then
+		print_comment "Using $HOMEBREW_PREFIX for homebrew "
 		echo "Installing Homebrew ..."
 			#curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -126,20 +131,22 @@ then
 	brew update --force 					 # https://github.com/Homebrew/brew/issues/1151
 	echo "Updated forcefully"
 
-	echo "Installing apps from Brewfile"
+	print_comment "Installing apps from Brewfile"
 	# generic apps for all engineers
 	if brew bundle --file="$BREWFILE"; then
-		echo "All items in Brewfile were installed successfully."
+		print_success "All items in Brewfile were installed successfully."
 	else
-		echo "Some items in Brewfile were not installed successfully."
+		print_warning "Some items in Brewfile were not installed successfully."
 	fi
 
 ########################[ Run user customisations ]############################
-# run anything from the user local file
-	if [ -f "$USER.local" ]; then
-		echo "Running customisations using preferences from $USER.local"
-		# shellcheck disable=SC1090
-		sh "$USER.local"
+# run anything from the user local file, assuming the user wants it 
+	ask_for_confirmation "Do you want it include customisations and preferences from $USER.local?"
+	if answer_is_yes; then
+		if [ -f "$USER.local" ]; then
+			# shellcheck disable=SC1090
+			sh "$USER.local"
+		fi
 	fi
 
 ########################[ OSX Customisations ]#################################
