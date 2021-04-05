@@ -72,15 +72,15 @@ gem_install_or_update "bundler"
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 
-echo "Installing latest Node..."
-bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-install_asdf_language "nodejs" "latest"
+# echo "Installing latest Node..."
+# bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+# install_asdf_language "nodejs" "latest"
 
-echo "Installing latest yarn"
-npm install -g yarn
+# echo "Installing latest yarn"
+# npm install -g yarn
 
-echo "Installing latest grunt"
-npm install -g grunt
+# echo "Installing latest grunt"
+# npm install -g grunt
 
 
 # echo "Installing Java 8"
