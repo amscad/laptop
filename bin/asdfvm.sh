@@ -33,11 +33,11 @@ install_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 
 # install_asdf_plugin "java" "https://github.com/halcyon/asdf-java.git"
-# install_asdf_plugin "maven" "https://github.com/halcyon/asdf-maven"
-# install_asdf_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git"
+install_asdf_plugin "maven" "https://github.com/halcyon/asdf-maven"
+install_asdf_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git"
 # install_asdf_plugin "groovy" "https://github.com/weibemoura/asdf-groovy.git"
 # install_asdf_plugin "grails" "https://github.com/weibemoura/asdf-grails.git"
-# install_asdf_plugin "kotlin" "https://github.com/missingcharacter/asdf-kotlin.git"
+install_asdf_plugin "kotlin" "https://github.com/missingcharacter/asdf-kotlin.git"
 
 # Use brew to manage flutter and dart
 # install_asdf_plugin "dart" "https://github.com/patoconnor43/asdf-dart.git"
@@ -77,10 +77,10 @@ bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs" "latest"
 
 echo "Installing latest yarn"
-bash "npm install -g yarn"
+npm install -g yarn
 
 echo "Installing latest grunt"
-bash "npm install -g grunt"
+npm install -g grunt
 
 
 # echo "Installing Java 8"
@@ -89,23 +89,24 @@ bash "npm install -g grunt"
 # echo "Installing Java 11"
 # install_asdf_language "java" "adoptopenjdk-11.0.8+10.openj9-0.21.0"
 
-# echo "Installing latest Maven"
-# install_asdf_language "maven" "latest"
+echo "Installing latest Maven"
+install_asdf_language "maven" "latest"
 
-# echo "Installing latest gradle"
-# install_asdf_language "gradle" "latest"
+echo "Installing latest gradle"
+install_asdf_language "gradle" "latest"
 
 # echo "Installing latest groovy"
 # install_asdf_language "groovy" "groovy-binary-2.4.3"
 # echo "Installing latest grails"
 # install_asdf_language "grails" "latest"
-# echo "Installing latest kotlin"
-# install_asdf_language "kotlin" "latest"
+echo "Installing latest kotlin"
+install_asdf_language "kotlin" "latest"
 
 # echo "Installing latest dart"
 # install_asdf_language "dart" "latest"
 # echo "Installing latest flutter"
 # install_asdf_language "flutter" "1.20.2-stable"
+# install_asdf_language "flutter" "latest"
 # echo "Installing latest firebase"
 # install_asdf_language "firebase" "latest"
 
