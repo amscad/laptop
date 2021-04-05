@@ -14,3 +14,5 @@ asdf plugin remove flutter
 asdf plugin remove firebase
 
 asdf plugin remove python
+
+asdf plugin remove postgres
